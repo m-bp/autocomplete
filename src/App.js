@@ -3,7 +3,7 @@ import Autocomplete from './components/Autocomplete';
 import ErrorIcon from './components/ErrorIcon';
 import LoadingIcon from './components/LoadingIcon';
 import MagnifierIcon from './components/MagnifierIcon';
-import inMemoryService from './services/inMemoryService';
+import movieService from './services/movieService';
 
 const State = {
   LOADING: 1,
@@ -25,7 +25,7 @@ function App() {
 
     setState(State.LOADING);
 
-    inMemoryService.search(query).then((results) => {
+    movieService.search(query).then((results) => {
       setSuggestions(results);
 
       if (results.length) setState(State.READY);
@@ -48,6 +48,17 @@ function App() {
     [State.NOT_FOUND]: <ErrorIcon />,
   }[state];
 
+  if (chosenOption) {
+    return (
+      <div className="app">
+        <p>
+          Has seleccionado: <em>{chosenOption}</em>
+        </p>
+        <button onClick={handleBackClick}>Go back</button>
+      </div>
+    );
+  }
+
   return (
     <div className="app">
       <form autoComplete="off">
@@ -60,13 +71,16 @@ function App() {
           onSelectSuggestion={handleSelectSuggestion}
           icon={icon}
           renderSuggestion={(suggestion) => (
-            <li className="suggestions__item" key={suggestion}>
+            <li
+              className="suggestions__item"
+              key={suggestion.imdbID || suggestion}
+            >
               <button
                 className="suggestions__inner"
-                onClick={() => handleSelectSuggestion(suggestion)}
+                onClick={() => handleSelectSuggestion(suggestion.Title)}
                 type="button"
               >
-                {suggestion}
+                {suggestion.Title || suggestion}
               </button>
             </li>
           )}
