@@ -1,10 +1,11 @@
 function Autocomplete({
   label,
   placeholder,
-  onChange,
-  value,
   icon,
+  value,
   suggestions,
+  onChange,
+  onSelectSuggestion,
 }) {
   return (
     <div>
@@ -19,7 +20,14 @@ function Autocomplete({
         />
         {icon && <span>{icon}</span>}
       </div>
-      {suggestions && suggestions.map((suggestion) => <p>{suggestion}</p>)}
+      {suggestions &&
+        suggestions.map((suggestion) => (
+          <p>
+            <button onClick={() => onSelectSuggestion(suggestion)}>
+              {suggestion}
+            </button>
+          </p>
+        ))}
     </div>
   );
 }

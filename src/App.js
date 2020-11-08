@@ -23,6 +23,10 @@ function App() {
     setQuery(newQuery);
   };
 
+  const handleSelectSuggestion = (newQuery) => {
+    setQuery(newQuery);
+  };
+
   const icon = 'X';
 
   return (
@@ -33,6 +37,7 @@ function App() {
         value={query}
         onChange={handleChange}
         suggestions={suggestions}
+        onSelectSuggestion={handleSelectSuggestion}
         icon={icon}
       />
     </div>
