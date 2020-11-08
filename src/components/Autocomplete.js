@@ -7,7 +7,7 @@ function Autocomplete({
   value,
   suggestions,
   onChange,
-  onSelectSuggestion,
+  renderSuggestion,
 }) {
   const listElement = useRef(null);
 
@@ -39,17 +39,7 @@ function Autocomplete({
             style={{ maxHeight }}
             ref={listElement}
           >
-            {suggestions.map((suggestion) => (
-              <li className="suggestions__item">
-                <button
-                  className="suggestions__inner"
-                  onClick={() => onSelectSuggestion(suggestion)}
-                  type="button"
-                >
-                  {suggestion}
-                </button>
-              </li>
-            ))}
+            {suggestions.map(renderSuggestion)}
           </ul>
         )}
       </div>

@@ -59,6 +59,17 @@ function App() {
           suggestions={suggestions}
           onSelectSuggestion={handleSelectSuggestion}
           icon={icon}
+          renderSuggestion={(suggestion) => (
+            <li className="suggestions__item" key={suggestion}>
+              <button
+                className="suggestions__inner"
+                onClick={() => handleSelectSuggestion(suggestion)}
+                type="button"
+              >
+                {suggestion}
+              </button>
+            </li>
+          )}
         />
       </form>
     </div>
