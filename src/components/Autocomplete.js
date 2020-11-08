@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+
 function Autocomplete({
   label,
   placeholder,
@@ -7,6 +9,12 @@ function Autocomplete({
   onChange,
   onSelectSuggestion,
 }) {
+  const listElement = useRef(null);
+
+  const bottomSpace = 30;
+  const listY = listElement.current?.getBoundingClientRect().y;
+  const maxHeight = window.innerHeight - listY - bottomSpace || null;
+
   return (
     <div className="autocomplete">
       <label className="autocomplete__label" htmlFor="autocomplete">
@@ -26,7 +34,11 @@ function Autocomplete({
         </div>
 
         {suggestions && (
-          <ul className="autocomplete__suggestions suggestions">
+          <ul
+            className="autocomplete__suggestions suggestions"
+            style={{ maxHeight }}
+            ref={listElement}
+          >
             {suggestions.map((suggestion) => (
               <li className="suggestions__item">
                 <button
