@@ -31,7 +31,7 @@ function App() {
 
   return (
     <div className="app">
-      <form>
+      <form autoComplete="off">
         <Autocomplete
           label="Encuentra profesionales de confianza"
           placeholder="Qué necesitas..."
