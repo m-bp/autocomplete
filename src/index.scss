@@ -1,5 +1,123 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+$transition-speed: 0.2s;
+
+*,
+:before,
+:after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
+}
+
+.app {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  max-width: 90%;
+  margin: auto;
+  transform: translate(-50%, -50%);
+}
+
+.autocomplete {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1em 0;
+
+  &__label {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+  }
+
+  &__outer,
+  &__inner {
+    position: relative;
+  }
+
+  &__input {
+    height: 3em;
+    width: 100%;
+    padding: 0.875em 3em 0.75em 1em;
+    color: #404040;
+    border: 1px solid #d2d2d2;
+    border-radius: 4px;
+    transition: box-shadow $transition-speed, border-color $transition-speed,
+      background-color $transition-speed;
+
+    &::placeholder {
+      color: #9b9b9b;
+      transition: color $transition-speed;
+    }
+
+    &:hover {
+      background-color: #fafafa;
+      border-color: #9b9b9b;
+
+      &::placeholder {
+        color: #757575;
+      }
+    }
+  }
+
+  &:focus-within &__input {
+    outline: none;
+    border-color: #ff7300;
+    box-shadow: 0px 0px 8px rgba(255, 115, 0, 0.2);
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: 1em;
+    height: 1.5em;
+    width: 1.5em;
+    color: #757575;
+    transform: translateY(-50%);
+    transition: color $transition-speed;
+  }
+
+  &:focus-within &__icon {
+    color: #ff7300;
+  }
+}
+
+.suggestions {
+  position: absolute;
+  top: 2.875em;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #cbcbcb;
+  border-radius: 4px;
+  border-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  list-style: none;
+  overflow: auto;
+  z-index: -1;
+
+  &__item {
+    // ...
+  }
+
+  &__inner {
+    display: block;
+    height: 2.625em;
+    width: 100%;
+    margin: 0;
+    padding: 0.6875em 1em 0.5625em;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color $transition-speed;
+
+    &:hover {
+      background-color: #fafafa;
+    }
+  }
 }
