@@ -15,6 +15,7 @@ function App() {
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [state, setState] = useState(State.READY);
+  const [chosenOption, setChosenOption] = useState();
 
   useEffect(() => {
     // No point searching for nothing
@@ -40,6 +41,12 @@ function App() {
 
   const handleSelectSuggestion = (newQuery) => {
     setQuery(newQuery);
+    setChosenOption(newQuery);
+  };
+
+  const handleBackClick = () => {
+    setChosenOption('');
+    setQuery('');
   };
 
   const icon = {
