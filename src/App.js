@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Highlighter from 'react-highlight-words';
 import Autocomplete from './components/Autocomplete';
 import ErrorIcon from './components/ErrorIcon';
 import LoadingIcon from './components/LoadingIcon';
@@ -87,7 +88,12 @@ function App() {
                 onClick={() => handleSelectSuggestion(suggestion.Title)}
                 type="button"
               >
-                {suggestion.Title || suggestion}
+                <Highlighter
+                  searchWords={[query]}
+                  textToHighlight={suggestion.Title || suggestion}
+                  highlightStyle={{ fontWeight: 'bold', background: 'none' }}
+                  autoEscape
+                />
               </button>
             </li>
           )}
