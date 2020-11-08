@@ -31,15 +31,17 @@ function App() {
 
   return (
     <div className="app">
-      <Autocomplete
-        label="Encuentra profesionales de confianza"
-        placeholder="Qué necesitas..."
-        value={query}
-        onChange={handleChange}
-        suggestions={suggestions}
-        onSelectSuggestion={handleSelectSuggestion}
-        icon={icon}
-      />
+      <form>
+        <Autocomplete
+          label="Encuentra profesionales de confianza"
+          placeholder="Qué necesitas..."
+          value={query}
+          onChange={handleChange}
+          suggestions={suggestions}
+          onSelectSuggestion={handleSelectSuggestion}
+          icon={icon}
+        />
+      </form>
     </div>
   );
 }

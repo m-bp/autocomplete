@@ -20,14 +20,21 @@ function Autocomplete({
         />
         {icon && <span>{icon}</span>}
       </div>
-      {suggestions &&
-        suggestions.map((suggestion) => (
-          <p>
-            <button onClick={() => onSelectSuggestion(suggestion)}>
-              {suggestion}
-            </button>
-          </p>
-        ))}
+
+      {suggestions && (
+        <ul>
+          {suggestions.map((suggestion) => (
+            <li>
+              <button
+                onClick={() => onSelectSuggestion(suggestion)}
+                type="button"
+              >
+                {suggestion}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
