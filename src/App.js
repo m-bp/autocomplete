@@ -71,8 +71,8 @@ function App() {
     <div className="app">
       <form autoComplete="off">
         <Autocomplete
-          label="Encuentra profesionales de confianza"
-          placeholder="Qué necesitas..."
+          label="Encuentra tu película favorita"
+          placeholder="Busca por título..."
           value={query}
           onChange={handleChange}
           suggestions={suggestions}
