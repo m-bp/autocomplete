@@ -87,6 +87,7 @@ body {
 }
 
 .suggestions {
+  display: none;
   position: absolute;
   top: 2.875em;
   width: 100%;
@@ -100,6 +101,10 @@ body {
   list-style: none;
   overflow: auto;
   z-index: -1;
+
+  .autocomplete:focus-within & {
+    display: block;
+  }
 
   &__item {
     // ...
